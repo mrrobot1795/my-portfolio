@@ -70,7 +70,7 @@ const Header = () => (
         <NavLink href="/skills">Skills</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/contact">Contact</NavLink>
+        <NavLink href="/contact">Contact Me</NavLink>
       </NavItem>
     </NavList>
   </Navbar>
