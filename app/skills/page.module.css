@@ -1,21 +1,23 @@
 .skillsSection {
     text-align: center;
     padding: 2rem;
-    max-width: 1200px; /* Constraining the width to fit within header nav boundaries */
-    margin: 0 auto; /* Center the section within the page */
+    max-width: 1200px;
+    /* Constraining the width to fit within header nav boundaries */
+    margin: 0 auto;
+    /* Center the section within the page */
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .skillsHeader {
+}
+
+.skillsHeader {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #333;
     font-weight: bold;
-  }
-  
-  .skillsList {
+}
+
+.skillsList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,29 +25,32 @@
     padding: 0;
     margin: 0;
     gap: 1rem;
-  }
-  
-  .skillItem {
-    background-color: #0070f3; /* Blue color for skill item background */
+}
+
+.skillItem {
+    background-color: #0070f3;
+    /* Blue color for skill item background */
     color: white;
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
-  }
-  
-  .skillItem:hover {
-    transform: scale(1.05); /* Adds a slight hover effect */
-  }
-  
-  @media (max-width: 768px) {
+}
+
+.skillItem:hover {
+    transform: scale(1.05);
+    /* Adds a slight hover effect */
+}
+
+@media (max-width: 768px) {
     .skillsSection {
-      padding: 1rem;
+        padding: 1rem;
     }
+
     .skillItem {
-      font-size: 0.9rem; /* Slightly smaller font size for mobile */
-      padding: 8px 12px;
+        font-size: 0.9rem;
+        /* Slightly smaller font size for mobile */
+        padding: 8px 12px;
     }
-  }
-  
+}

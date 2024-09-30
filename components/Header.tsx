@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import Link from 'next/link';
+import styled from "styled-components";
+import Link from "next/link";
 
 const Navbar = styled.nav`
   background-color: #333;
@@ -35,11 +35,21 @@ const NavLink = styled(Link)`
 const Header = () => (
   <Navbar>
     <NavList>
-      <NavItem><NavLink href="/">Home</NavLink></NavItem>
-      <NavItem><NavLink href="/about">About</NavLink></NavItem>
-      <NavItem><NavLink href="/projects">Projects</NavLink></NavItem>
-      <NavItem><NavLink href="/skills">Skills</NavLink></NavItem>
-      <NavItem><NavLink href="/contact">Contact</NavLink></NavItem>
+      <NavItem>
+        <NavLink href="/">Home</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/about">About</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/projects">Projects</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/skills">Skills</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/contact">Contact</NavLink>
+      </NavItem>
     </NavList>
   </Navbar>
 );
