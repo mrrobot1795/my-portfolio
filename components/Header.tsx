@@ -26,9 +26,31 @@ const NavLink = styled(Link)`
   text-decoration: none;
   font-size: 1rem;
   padding: 0.5rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #aaa;
+    color: #00d1b2; /* Change color on hover */
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #00d1b2; /* Add a line animation */
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  &:active {
+    transform: scale(0.95); /* Scale down slightly on click */
   }
 `;
 
