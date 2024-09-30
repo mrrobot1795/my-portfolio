@@ -10,6 +10,10 @@ const projects = [
     link: "#",
   },
   { title: "Project 2", description: "Description of project 2", link: "#" },
+  { title: "Project 3", description: "Description of project 2", link: "#" },
+  { title: "Project 4", description: "Description of project 2", link: "#" },
+  { title: "Project 5", description: "Description of project 2", link: "#" },
+  { title: "Project 6", description: "Description of project 2", link: "#" },
 ];
 
 export default function ProjectsPage() {
