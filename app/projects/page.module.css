@@ -1,0 +1,36 @@
+#projects {
+  text-align: center;
+  padding: 2rem;
+}
+
+.projectsHeader {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Center the header */
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.project-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: calc(100% - 40px); /* Ensures cards fit within mobile screen */
+  max-width: 300px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%; /* Full width on smaller screens */
+    max-width: none;
+  }
+}
