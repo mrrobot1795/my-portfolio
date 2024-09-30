@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white text-center p-4">
@@ -11,11 +11,7 @@ const Footer = () => (
       >
         <FaLinkedin size={24} />
       </a>
-      <a
-        href="https://github.com/mrrobot1795"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://github.com/mrrobot1795" target="_blank" rel="noreferrer">
         <FaGithub size={24} />
       </a>
     </div>

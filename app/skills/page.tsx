@@ -1,10 +1,23 @@
 import styles from "./page.module.css";
 
 const skills = [
-  "React", "Node.js", "TypeScript", "AWS", "Docker", 
-  "MERN", "Next.js", "Nest.js", "C++", "Python", 
-  "Java", "Spring Boot", "MongoDB", "Express.js", 
-  "HTML", "CSS", "Kafka"
+  "React",
+  "Node.js",
+  "TypeScript",
+  "AWS",
+  "Docker",
+  "MERN",
+  "Next.js",
+  "Nest.js",
+  "C++",
+  "Python",
+  "Java",
+  "Spring Boot",
+  "MongoDB",
+  "Express.js",
+  "HTML",
+  "CSS",
+  "Kafka",
 ];
 
 export default function SkillsPage() {
