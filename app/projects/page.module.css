@@ -6,7 +6,7 @@
 .projectsHeader {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  text-align: center; /* Center the header */
+  text-align: center;
 }
 
 .projects {
@@ -20,7 +20,7 @@
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
-  width: calc(100% - 40px); /* Ensures cards fit within mobile screen */
+  width: calc(100% - 40px);
   max-width: 300px;
   box-sizing: border-box;
   text-align: left;
@@ -30,7 +30,7 @@
   .project-card {
     padding: 15px;
     margin-bottom: 15px;
-    width: 100%; /* Full width on smaller screens */
+    width: 100%;
     max-width: none;
   }
 }

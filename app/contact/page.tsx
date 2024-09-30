@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -45,10 +46,26 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="p-8 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
+    <motion.section
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="p-8 bg-gray-100"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl font-bold text-center mb-6"
+      >
+        Contact Me
+      </motion.h2>
+
       <div className="flex justify-center">
-        <form
+        <motion.form
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
           onSubmit={handleSubmit}
           className="bg-white p-6 shadow-md rounded-lg w-96"
         >
@@ -94,13 +111,9 @@ export default function ContactPage() {
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
-        </form>
+        </motion.form>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar
-      />
-    </section>
+      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar />
+    </motion.section>
   );
 }
