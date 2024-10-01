@@ -1,7 +1,10 @@
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-gray-800 text-white text-center p-4">
+  <footer
+    className="text-white text-center p-4"
+    style={{ backgroundColor: "#112" }}
+  >
     <p className="mb-4">&copy; 2024 Shashidhar Sripada. All rights reserved.</p>
     <div className="flex justify-center space-x-4">
       <a

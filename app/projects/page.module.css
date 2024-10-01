@@ -26,17 +26,17 @@
   text-align: left;
   transition: transform 0.3s ease;
   border-radius: 8px;
-  background-color: #fff; /* Add background for better visibility */
+  background-color: #fff;
 }
 
 .project-card:hover {
-  transform: scale(1.05); /* Scale up the project card on hover */
+  transform: scale(1.05);
 }
 
 .project-card img {
-  width: 100%; /* Ensure image fits the container */
+  width: 100%;
   height: auto;
-  border-radius: 8px; /* Round the corners of the image */
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 
@@ -59,7 +59,7 @@
 .project-card a {
   display: inline-block;
   margin-top: 10px;
-  color: #00d1b2; /* Change link color */
+  color: #00d1b2;
   text-decoration: none;
   font-weight: bold;
 }
@@ -77,6 +77,6 @@
   }
 
   .projects {
-    flex-direction: column; /* Stack projects vertically on smaller screens */
+    flex-direction: column;
   }
 }

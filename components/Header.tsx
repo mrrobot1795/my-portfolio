@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Navbar = styled.nav`
-  background-color: #333;
+  background-color: #112;
   padding: 1rem;
 `;
 
@@ -23,8 +23,7 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled(Link)<{ $isActive: boolean }>`
-  color: ${(props) =>
-    props.$isActive ? "#00d1b2" : "white"};
+  color: ${(props) => (props.$isActive ? "#00d1b2" : "white")};
   text-decoration: none;
   font-size: 1rem;
   padding: 0.5rem;
@@ -40,12 +39,12 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: ${(props) =>
-      props.$isActive ? "100%" : "0"};
+    width: ${(props) => (props.$isActive ? "100%" : "0")};
     height: 2px;
     background-color: #00d1b2;
     transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
     left: ${(props) => (props.$isActive ? "0" : "50%")};
+  }
 
   &:hover::after {
     width: 100%;

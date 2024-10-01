@@ -2,9 +2,7 @@
     text-align: center;
     padding: 2rem;
     max-width: 1200px;
-    /* Constraining the width to fit within header nav boundaries */
     margin: 0 auto;
-    /* Center the section within the page */
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,7 +27,6 @@
 
 .skillItem {
     background-color: #0070f3;
-    /* Blue color for skill item background */
     color: white;
     padding: 10px 15px;
     border-radius: 4px;
@@ -40,7 +37,6 @@
 
 .skillItem:hover {
     transform: scale(1.05);
-    /* Adds a slight hover effect */
 }
 
 @media (max-width: 768px) {
@@ -50,7 +46,6 @@
 
     .skillItem {
         font-size: 0.9rem;
-        /* Slightly smaller font size for mobile */
         padding: 8px 12px;
     }
 }
