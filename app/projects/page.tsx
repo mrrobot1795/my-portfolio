@@ -10,12 +10,14 @@ const projects = [
     description: "A tarot card reading app",
     link: "#",
     image: "/images/tarot-card-app.png",
+    github: "#",
     technologies: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
     title: "My Portfolio",
     description: "A portfolio which showcases my projects",
     link: "https://shashidhar-web.vercel.app",
+    github: "https://github.com/mrrobot1795/my-portfolio",
     image: "/images/project-portfolio.png",
     technologies: [
       "Next.js",
@@ -79,8 +81,13 @@ export default function ProjectsPage() {
                 ))}
               </ul>
             </div>
-            <a href={project.link} target="_blank" rel="noreferrer">
-              View Project
+            <div>
+              <a href={project.link} target="_blank" rel="noreferrer">
+                View Project
+              </a>
+            </div>
+            <a href={project.github} target="_blank" rel="noreferrer">
+              Github
             </a>
           </motion.div>
         ))}
