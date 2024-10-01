@@ -2,18 +2,30 @@
 
 import { motion } from "framer-motion";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 const projects = [
   {
     title: "Tarot Card App",
     description: "A tarot card reading app",
     link: "#",
+    image: "/images/tarot-card-app.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB"],
   },
-  { title: "Project 2", description: "Description of project 2", link: "#" },
-  { title: "Project 3", description: "Description of project 2", link: "#" },
-  { title: "Project 4", description: "Description of project 2", link: "#" },
-  { title: "Project 5", description: "Description of project 2", link: "#" },
-  { title: "Project 6", description: "Description of project 2", link: "#" },
+  {
+    title: "My Portfolio",
+    description: "A portfolio which showcases my projects",
+    link: "https://shashidhar-web.vercel.app",
+    image: "/images/project-portfolio.png",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "CSS",
+      "Node.js",
+      "Express",
+    ],
+  },
 ];
 
 export default function ProjectsPage() {
@@ -48,9 +60,28 @@ export default function ProjectsPage() {
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3 }}
           >
-            <h3>{project.title}</h3>
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={300}
+              height={200}
+              className={styles.projectImage}
+            />
+            <h3>
+              <b>{project.title}</b>
+            </h3>
             <p>{project.description}</p>
-            <a href={project.link}>View Project</a>
+            <div className={styles.technologies}>
+              <strong>Technologies:</strong>
+              <ul>
+                {project.technologies.map((tech, techIndex) => (
+                  <li key={techIndex}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+            <a href={project.link} target="_blank" rel="noreferrer">
+              View Project
+            </a>
           </motion.div>
         ))}
       </motion.div>
