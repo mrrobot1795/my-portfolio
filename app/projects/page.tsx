@@ -8,10 +8,17 @@ const projects = [
   {
     title: "Tarot Card App",
     description: "A tarot card reading app",
-    link: "#",
-    image: "/images/tarot-card-app.png",
-    github: "#",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
+    link: "https://tarot-mrrobot.vercel.app/",
+    image: "/images/project-tarot-card-app.png",
+    github: "https://github.com/mrrobot1795/tarot-app",
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "TypeScript",
+      "TailWind CSS",
+    ],
   },
   {
     title: "My Portfolio",
