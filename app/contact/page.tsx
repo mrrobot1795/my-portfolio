@@ -128,7 +128,7 @@ export default function ContactPage() {
           </button>
 
           <a
-            href="/ShashidharSripada.pdf"
+            href="/ShashidharSripada2.pdf"
             download
             className="btn-primary inline-block w-full mt-4 text-center py-2 px-4 bg-green-500 hover:bg-green-700 rounded-lg text-white"
           >

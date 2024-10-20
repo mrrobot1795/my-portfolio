@@ -35,6 +35,21 @@ const projects = [
       "Express",
     ],
   },
+  {
+    title: "Spotify Client App",
+    description: "A Spotify client that let's you define start and end times for the songs you want to play",
+    link: "https://spotify-mrrobot.vercel.app/",
+    image: "/images/project-spotify-client-app.png",
+    github: "https://github.com/mrrobot1795/spotify-frontend",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JavaScript",
+      "Spotify Web SDK",
+    ],
+  },
 ];
 
 export default function ProjectsPage() {
