@@ -15,9 +15,13 @@ export default function Header() {
           sx={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "flex-start", 
             gap: 2,
+            paddingTop: 1, 
             "& .MuiButton-root": {
               color: "text.header",
+              height: "45px", 
+              marginTop: "-4px",
               "&:hover": {
                 color: "primary.main",
               },

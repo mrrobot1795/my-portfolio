@@ -97,13 +97,13 @@ const theme = createTheme({
           left: 0,
           right: 0,
           width: '100vw',
-          height: '72px', // Increased height to accommodate buttons
+          height: '72px',
           zIndex: 1100,
           backgroundColor: '#112233',
           color: '#ffffff',
-          borderRadius: 0, // Remove any border radius
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)', // Optional: adds subtle shadow
-          overflow: 'hidden', // Contain the selection line
+          borderRadius: 0,
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          overflow: 'hidden',
         },
       },
     },
@@ -181,7 +181,7 @@ const theme = createTheme({
           style: {
             backgroundColor: '#112233',
             color: '#ffffff',
-            marginTop: 'auto', // This pushes the footer to the bottom
+            marginTop: 'auto',
             width: '100%',
             '& .MuiTypography-root': {
               color: '#ffffff',
@@ -220,9 +220,9 @@ const theme = createTheme({
           margin: 0,
           padding: 0,
           minHeight: '100vh',
-          backgroundColor: '#ffffff', // Match your background color
+          backgroundColor: '#ffffff',
         },
-        'body > div:first-of-type': { // This targets the Next.js root div
+        'body > div:first-of-type': {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
@@ -231,13 +231,13 @@ const theme = createTheme({
           flex: '1 0 auto',
           display: 'flex',
           flexDirection: 'column',
-          paddingTop: '72px', // Match header height
+          paddingTop: '72px',
           background: `linear-gradient(135deg, 
             rgba(255,255,255,1) 0%,
             rgba(240,248,255,1) 50%,
             rgba(230,245,255,1) 100%)`,
-          '& > div': { // Target immediate children of main
-            marginTop: '24px', // Add spacing for content
+          '& > div': {
+            marginTop: '24px',
           },
         },
         footer: {
@@ -250,26 +250,19 @@ const theme = createTheme({
     MuiToolbar: {
       styleOverrides: {
         root: {
-          height: '72px', // Match AppBar height
+          minHeight: '72px !important',
           padding: '0 24px',
           display: 'flex',
-          justifyContent: 'center', // Center the content horizontally
-          alignItems: 'center', // Center the content vertically
-          '@media (max-width: 600px)': {
-            padding: '0 12px',
-            '& .MuiButton-root': {
-              padding: '0 8px',
-              minWidth: 'auto',
-              fontSize: '0.875rem',
-            },
-          },
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          paddingTop: '8px',
           '& .MuiButton-root': {
-            height: '72px',
+            height: '60px',
             padding: '0 16px',
             position: 'relative',
             color: 'text.header',
             '&.active': {
-              color: 'theme.palette.primary.main',
+              color: '#00d1b2',
               '&::after': {
                 transform: 'scaleX(1)',
               },
@@ -281,12 +274,20 @@ const theme = createTheme({
               left: 0,
               right: 0,
               height: '3px',
-              backgroundColor: 'theme.palette.primary.main',
+              backgroundColor: '#00d1b2',
               transform: 'scaleX(0)',
               transition: 'transform 0.2s ease-in-out',
             },
             '&:hover::after': {
               transform: 'scaleX(1)',
+            },
+          },
+          '@media (max-width: 600px)': {
+            padding: '0 12px',
+            '& .MuiButton-root': {
+              padding: '0 8px',
+              minWidth: 'auto',
+              fontSize: '0.875rem',
             },
           },
         },
