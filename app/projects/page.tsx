@@ -1,7 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
-import styles from "./page.module.css";
+import { 
+  Box, 
+  Container, 
+  Typography, 
+  Grid, 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  CardActions, 
+  Chip, 
+  Button, 
+  Fade, 
+  Grow,
+  useTheme 
+} from '@mui/material';
+import { GitHub, Launch } from '@mui/icons-material';
 import Image from "next/image";
 
 const projects = [
@@ -53,67 +67,186 @@ const projects = [
 ];
 
 export default function ProjectsPage() {
-  return (
-    <motion.section
-      id="projects"
-      className={styles.projectsSection}
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <motion.h2
-        className={styles.projectsHeader}
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Projects
-      </motion.h2>
+  const theme = useTheme();
 
-      <motion.div
-        className={styles.projects}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+  return (
+    <Container maxWidth="lg">
+      <Box
+        component="section"
+        sx={{
+          py: theme.spacing(10),
+          px: theme.spacing(4),
+        }}
       >
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className={styles["project-card"]}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+        <Fade in={true} timeout={800}>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+              textAlign: 'center',
+              mb: theme.spacing(8),
+              fontSize: {
+                xs: '2rem',
+                sm: '2.5rem',
+              },
+              background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={300}
-              height={200}
-              className={styles.projectImage}
-            />
-            <h3>
-              <b>{project.title}</b>
-            </h3>
-            <p>{project.description}</p>
-            <div className={styles.technologies}>
-              <strong>Technologies:</strong>
-              <ul>
-                {project.technologies.map((tech, techIndex) => (
-                  <li key={techIndex}>{tech}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <a href={project.link} target="_blank" rel="noreferrer">
-                View Project
-              </a>
-            </div>
-            <a href={project.github} target="_blank" rel="noreferrer">
-              Github
-            </a>
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.section>
+            Featured Projects
+          </Typography>
+        </Fade>
+
+        <Grid container spacing={4} justifyContent="center">
+          {projects.map((project, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4}>
+              <Grow
+                in={true}
+                timeout={800}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <Card
+                  elevation={3}
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: theme.shadows[8],
+                    },
+                    borderRadius: 2,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <CardMedia
+                    component="div"
+                    sx={{
+                      position: 'relative',
+                      height: 220,
+                      overflow: 'hidden',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '40%',
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
+                      },
+                    }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      style={{ 
+                        objectFit: 'cover',
+                        transition: 'transform 0.3s ease-in-out',
+                      }}
+                    />
+                  </CardMedia>
+                  <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                    <Typography 
+                      variant="h5" 
+                      component="h3" 
+                      gutterBottom
+                      sx={{ 
+                        fontWeight: 'bold',
+                        color: theme.palette.text.primary 
+                      }}
+                    >
+                      {project.title}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: theme.palette.text.secondary,
+                        mb: 3,
+                        lineHeight: 1.6 
+                      }}
+                    >
+                      {project.description}
+                    </Typography>
+                    <Box sx={{ mt: 2 }}>
+                      <Typography 
+                        variant="subtitle2" 
+                        sx={{ 
+                          mb: 1.5,
+                          color: theme.palette.text.primary,
+                          fontWeight: 'medium'
+                        }}
+                      >
+                        Technologies Used:
+                      </Typography>
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                        {project.technologies.map((tech, techIndex) => (
+                          <Chip
+                            key={techIndex}
+                            label={tech}
+                            size="small"
+                            sx={{
+                              backgroundColor: theme.palette.primary.main,
+                              color: theme.palette.primary.contrastText,
+                              fontWeight: 500,
+                              '&:hover': {
+                                backgroundColor: theme.palette.primary.dark,
+                                transform: 'scale(1.05)',
+                              },
+                              transition: 'all 0.2s ease-in-out',
+                            }}
+                          />
+                        ))}
+                      </Box>
+                    </Box>
+                  </CardContent>
+                  <CardActions sx={{ p: 3, pt: 0 }}>
+                    <Button 
+                      startIcon={<Launch />}
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="contained"
+                      size="medium"
+                      sx={{
+                        mr: 1,
+                        fontWeight: 500,
+                        '&:hover': {
+                          transform: 'translateY(-2px)',
+                        },
+                        transition: 'all 0.2s ease-in-out',
+                      }}
+                    >
+                      Live Demo
+                    </Button>
+                    <Button
+                      startIcon={<GitHub />}
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="outlined"
+                      size="medium"
+                      sx={{
+                        fontWeight: 500,
+                        '&:hover': {
+                          transform: 'translateY(-2px)',
+                        },
+                        transition: 'all 0.2s ease-in-out',
+                      }}
+                    >
+                      Source Code
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grow>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Container>
   );
 }

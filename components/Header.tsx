@@ -1,94 +1,78 @@
 "use client";
 
-import styled from "styled-components";
+import { AppBar, Toolbar, Box, Button, Container } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const Navbar = styled.nav`
-  background-color: #112;
-  padding: 1rem;
-`;
-
-const NavList = styled.ul`
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  gap: 1rem;
-`;
-
-const NavItem = styled.li`
-  margin: 0;
-`;
-
-const NavLink = styled(Link)<{ $isActive: boolean }>`
-  color: ${(props) => (props.$isActive ? "#00d1b2" : "white")};
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.5rem;
-  position: relative;
-  transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: #00d1b2;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: ${(props) => (props.$isActive ? "100%" : "0")};
-    height: 2px;
-    background-color: #00d1b2;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-    left: ${(props) => (props.$isActive ? "0" : "50%")};
-  }
-
-  &:hover::after {
-    width: 100%;
-    left: 0;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-`;
-
-const Header = () => {
+export default function Header() {
   const pathname = usePathname();
-  return (
-    <Navbar>
-      <NavList>
-        <NavItem>
-          <NavLink href="/" $isActive={pathname === "/"}>
-            Home
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/about" $isActive={pathname === "/about"}>
-            About
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/projects" $isActive={pathname === "/projects"}>
-            Projects
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/skills" $isActive={pathname === "/skills"}>
-            Skills
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/contact" $isActive={pathname === "/contact"}>
-            Contact
-          </NavLink>
-        </NavItem>
-      </NavList>
-    </Navbar>
-  );
-};
+  const theme = useTheme();
 
-export default Header;
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/projects", label: "Projects" },
+    { path: "/skills", label: "Skills" },
+    { path: "/contact", label: "Contact" },
+  ];
+
+  return (
+    <AppBar position="fixed" elevation={0} sx={{ backgroundColor: theme.palette.background.header, color: theme.palette.text.header }}>
+      <Container maxWidth="lg">
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 2,
+            "& .MuiButton-root": {
+              color: "text.header",
+              "&:hover": {
+                color: "primary.main",
+              },
+            },
+          }}
+        >
+          <Box sx={{ display: "flex", gap: theme.spacing(2) }}>
+            {navItems.map((item) => (
+              <Link key={item.path} href={item.path} style={{ textDecoration: "none" }}>
+                <Button
+                  sx={{
+                    color: pathname === item.path ? theme.palette.primary.main : theme.palette.text.header, // Use header text color instead of primary
+                    position: "relative",
+                    padding: theme.spacing(1, 2),
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      bottom: 0,
+                      left: pathname === item.path ? "0" : "50%",
+                      width: pathname === item.path ? "100%" : "0",
+                      height: "2px",
+                      bgcolor: theme.palette.primary.main,
+                      transition: theme.transitions.create(["width", "left"], {
+                        duration: theme.transitions.duration.shorter,
+                      }),
+                    },
+                    "&:hover": {
+                      color: theme.palette.primary.main,
+                      backgroundColor: "transparent",
+                      "&::after": {
+                        width: "100%",
+                        left: 0,
+                      },
+                    },
+                    "&:active": {
+                      transform: "scale(0.95)",
+                    },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              </Link>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}

@@ -4,9 +4,54 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
+import {
+  Box,
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Paper,
+  Modal,
+  Fade,
+  IconButton,
+  Stack,
+  useTheme,
+  Grid,
+  Divider,
+  Tooltip,
+} from "@mui/material";
+import {
+  Close as CloseIcon,
+  Download as DownloadIcon,
+  Article as ArticleIcon,
+  Email as EmailIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+} from "@mui/icons-material";
+
+const socialLinks = [
+  {
+    name: "Email",
+    icon: <EmailIcon />,
+    href: "mailto:shashidhar.sripada.17@gmail.com",
+    tooltip: "Send me an email",
+  },
+  {
+    name: "LinkedIn",
+    icon: <LinkedInIcon />,
+    href: "https://www.linkedin.com/in/shashidhar-sripada-899b2520a/",
+    tooltip: "Connect on LinkedIn",
+  },
+  {
+    name: "GitHub",
+    icon: <GitHubIcon />,
+    href: "https://github.com/mrrobot1795",
+    tooltip: "View my GitHub",
+  },
+];
 
 export default function ContactPage() {
+  const theme = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,14 +60,12 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +74,6 @@ export default function ContactPage() {
 
     try {
       const res = await axios.post("/api/send-message", formData);
-
       if (res.status === 200) {
         toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
@@ -47,126 +89,229 @@ export default function ContactPage() {
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="p-8 bg-white-100 min-h-screen flex flex-col justify-center items-center"
-    >
-      <motion.h2
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-3xl font-bold text-center mb-6"
+    <Container maxWidth="lg">
+      <Box 
+        sx={{ 
+          py: { xs: 4, md: 8 },
+          mt: { xs: 2, md: 4 } // Add margin top for spacing from header
+        }}
       >
-        Contact Me
-      </motion.h2>
+        <Grid container spacing={4}>
+          {/* Left Section - Contact Form */}
+          <Grid item xs={12} md={7}>
+            <Fade in timeout={800}>
+              <Stack spacing={4}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: "bold",
+                    background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    mb: 4,
+                    fontSize: { xs: "2rem", sm: "2.5rem" },
+                  }}
+                >
+                  Get in Touch
+                </Typography>
+                <Paper
+                  component="form"
+                  onSubmit={handleSubmit}
+                  elevation={3}
+                  sx={{
+                    p: 4,
+                    borderRadius: 2,
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-5px)",
+                    },
+                  }}
+                >
+                  <Stack spacing={3}>
+                    <TextField
+                      fullWidth
+                      label="Your Name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      variant="outlined"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Your Email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      variant="outlined"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      multiline
+                      rows={5}
+                      variant="outlined"
+                    />
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      disabled={isSubmitting}
+                      sx={{
+                        py: 1.5,
+                        fontSize: "1.1rem",
+                        transition: "transform 0.2s",
+                        "&:hover": {
+                          transform: "scale(1.02)",
+                        },
+                      }}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </Stack>
+                </Paper>
+              </Stack>
+            </Fade>
+          </Grid>
 
-      <div className="flex flex-col justify-center items-center w-full max-w-3xl space-y-8">
-        <motion.form
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          onSubmit={handleSubmit}
-          className="bg-white p-6 shadow-md rounded-lg w-96"
-        >
-          <div className="mb-4">
-            <label className="block text-gray-700">Your Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Your Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="textarea textarea-bordered w-full"
-              rows={5}
-              required
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className={`btn-primary w-full ${
-              isSubmitting ? "btn-disabled" : ""
-            }`}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </motion.form>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="w-96 h-auto bg-white p-6 shadow-md rounded-lg"
-        >
-          <h3 className="text-2xl font-bold mb-4 text-center">My Resume</h3>
-          <button
-            className="btn-primary w-full"
-            onClick={() => setIsModalOpen(true)}
-          >
-            View Full Resume
-          </button>
+          {/* Right Section - Social Links & Resume */}
+          <Grid item xs={12} md={5}>
+            <Fade in timeout={800} style={{ transitionDelay: "200ms" }}>
+              <Stack spacing={4}>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 4,
+                    borderRadius: 2,
+                    backgroundColor: theme.palette.background.paper,
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{ fontWeight: "bold", mb: 3 }}
+                  >
+                    Connect With Me
+                  </Typography>
+                  <Stack direction="row" spacing={2} justifyContent="center">
+                    {socialLinks.map((link) => (
+                      <Tooltip key={link.name} title={link.tooltip}>
+                        <IconButton
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{
+                            backgroundColor: theme.palette.primary.main,
+                            color: "white",
+                            "&:hover": {
+                              backgroundColor: theme.palette.primary.dark,
+                              transform: "scale(1.1)",
+                            },
+                            transition: "all 0.3s ease-in-out",
+                          }}
+                        >
+                          {link.icon}
+                        </IconButton>
+                      </Tooltip>
+                    ))}
+                  </Stack>
+                </Paper>
 
-          <a
-            href="/ShashidharSripada2.pdf"
-            download
-            className="btn-primary inline-block w-full mt-4 text-center py-2 px-4 bg-green-500 hover:bg-green-700 rounded-lg text-white"
-          >
-            Download Resume
-          </a>
-        </motion.div>
-      </div>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 4,
+                    borderRadius: 2,
+                    backgroundColor: theme.palette.background.paper,
+                  }}
+                >
+                  <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+                    My Resume
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Stack spacing={2}>
+                    <Button
+                      variant="contained"
+                      onClick={() => setIsModalOpen(true)}
+                      startIcon={<ArticleIcon />}
+                      fullWidth
+                      sx={{
+                        py: 1.5,
+                        backgroundColor: theme.palette.primary.main,
+                      }}
+                    >
+                      View Resume
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      href="/ShashidharSripada4.pdf"
+                      download
+                      startIcon={<DownloadIcon />}
+                      fullWidth
+                      sx={{ py: 1.5 }}
+                    >
+                      Download Resume
+                    </Button>
+                  </Stack>
+                </Paper>
+              </Stack>
+            </Fade>
+          </Grid>
+        </Grid>
 
-      {isModalOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        <Modal
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          closeAfterTransition
         >
-          <div className="bg-white w-3/4 h-3/4 p-7 rounded-lg relative">
-            <button
-              className="absolute top-2 right-2 text-xl font-bold"
-              onClick={() => setIsModalOpen(false)}
+          <Fade in={isModalOpen} timeout={theme.transitions.duration.standard}>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "75%",
+                height: "75%",
+                bgcolor: theme.palette.background.paper,
+                boxShadow: theme.shadows[24],
+                p: theme.spacing(4),
+                borderRadius: theme.shape.borderRadius,
+              }}
             >
-              &times;
-            </button>
-            <iframe
-              src="/ShashidharSripada2.pdf"
-              width="100%"
-              height="100%"
-              className="border border-gray-300 rounded"
-              title="Resume"
-            />
-          </div>
-        </motion.div>
-      )}
+              <IconButton
+                sx={{
+                  position: "absolute",
+                  right: theme.spacing(1),
+                  top: theme.spacing(1),
+                  color: theme.palette.grey[500],
+                }}
+                onClick={() => setIsModalOpen(false)}
+              >
+                <CloseIcon />
+              </IconButton>
+              <Box
+                component="iframe"
+                src="/ShashidharSripada4.pdf"
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                  borderRadius: theme.shape.borderRadius,
+                }}
+                title="Resume"
+              />
+            </Box>
+          </Fade>
+        </Modal>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar
-      />
-    </motion.section>
+        <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar />
+      </Box>
+    </Container>
   );
 }
