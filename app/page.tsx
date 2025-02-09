@@ -107,7 +107,7 @@ export default function HomePage() {
                 border: `4px solid ${theme.palette.primary.main}`,
               }}
               alt="Shashidhar Sripada"
-              src="/images/IMG_4755.jpg"  // Add your photo path here
+              src="/images/IMG_4755.jpg"
             />
             <Typography
               variant="h2"

@@ -91,7 +91,6 @@ export default function AboutPage() {
     <Container maxWidth="lg">
       <Box sx={{ py: theme.spacing(10), px: theme.spacing(4) }}>
         <Grid container spacing={6}>
-          {/* Left Section - Personal Info */}
           <Grid item xs={12} md={4}>
             <Fade in timeout={800}>
               <Stack spacing={4} alignItems="center">
@@ -135,7 +134,6 @@ export default function AboutPage() {
             </Fade>
           </Grid>
 
-          {/* Technical Highlights */}
           <Grid item xs={12} md={8}>
             <Grid container spacing={2} sx={{ mb: 4 }}>
               {highlights.map((highlight, index) => (

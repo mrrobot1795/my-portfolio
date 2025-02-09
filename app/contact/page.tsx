@@ -93,11 +93,10 @@ export default function ContactPage() {
       <Box 
         sx={{ 
           py: { xs: 4, md: 8 },
-          mt: { xs: 2, md: 4 } // Add margin top for spacing from header
+          mt: { xs: 2, md: 4 }
         }}
       >
         <Grid container spacing={4}>
-          {/* Left Section - Contact Form */}
           <Grid item xs={12} md={7}>
             <Fade in timeout={800}>
               <Stack spacing={4}>
@@ -179,7 +178,6 @@ export default function ContactPage() {
             </Fade>
           </Grid>
 
-          {/* Right Section - Social Links & Resume */}
           <Grid item xs={12} md={5}>
             <Fade in timeout={800} style={{ transitionDelay: "200ms" }}>
               <Stack spacing={4}>
