@@ -255,13 +255,38 @@ const theme = createTheme({
           display: 'flex',
           justifyContent: 'center', // Center the content horizontally
           alignItems: 'center', // Center the content vertically
+          '@media (max-width: 600px)': {
+            padding: '0 12px',
+            '& .MuiButton-root': {
+              padding: '0 8px',
+              minWidth: 'auto',
+              fontSize: '0.875rem',
+            },
+          },
           '& .MuiButton-root': {
-            height: '70px', // Slightly shorter than toolbar to contain the line
+            height: '72px',
             padding: '0 16px',
             position: 'relative',
-            overflow: 'visible', // Allow the selection line to be visible
+            color: 'text.header',
+            '&.active': {
+              color: 'theme.palette.primary.main',
+              '&::after': {
+                transform: 'scaleX(1)',
+              },
+            },
             '&::after': {
-              bottom: '2px', // Move the line up slightly
+              content: '""',
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              backgroundColor: 'theme.palette.primary.main',
+              transform: 'scaleX(0)',
+              transition: 'transform 0.2s ease-in-out',
+            },
+            '&:hover::after': {
+              transform: 'scaleX(1)',
             },
           },
         },
