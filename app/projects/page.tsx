@@ -64,6 +64,19 @@ const projects = [
       "Spotify Web SDK",
     ],
   },
+  {
+    title: "Memory Card Game",
+    description: "A simple memory card game where you have to match the cards",
+    link: "https://memory-card-game-mrrobot.vercel.app/",
+    image: "/images/project-memory-card-game.png",
+    github: "https://github.com/mrrobot1795/memory-card-game",
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Webpack",
+      "scss",
+    ],
+  },
 ];
 
 export default function ProjectsPage() {
